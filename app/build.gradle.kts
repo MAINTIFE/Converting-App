@@ -1,11 +1,24 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     id("com.android.application")
 }
 
 android {
+
     namespace = "com.example.aconverterapp"
     compileSdk = 34
 
+    packaging {
+        resources {
+            excludes += "META-INF/DEPENDENCIES"
+            // You can add other files to exclude if necessary, like:
+             excludes += "META-INF/LICENSE"
+             excludes += "META-INF/LICENSE.txt"
+             excludes += "META-INF/NOTICE"
+             excludes += "META-INF/NOTICE.txt"
+        }
+    }
     defaultConfig {
         applicationId = "com.example.aconverterapp"
         minSdk = 24
@@ -36,6 +49,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("org.apache.httpcomponents:httpclient:4.5.13")
+    implementation("org.json:json:20210307")
+    implementation("com.squareup.okhttp3:okhttp:4.9.2")
+
 }
